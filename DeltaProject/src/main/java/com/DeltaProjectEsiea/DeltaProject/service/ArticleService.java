@@ -22,11 +22,8 @@ public class ArticleService {
 	private ArticleTransformer articleTransformer;
 
 	public ArticleFull create(Article article) throws NotAllowedException {
-		if (article.getId() == null) {
-			return upsert(article);
-		} else {
-			throw new NotAllowedException();
-		}
+		return upsert(article);
+
 	}	
 	
 	public ArticleFull update(Article article) throws NotFoundException {

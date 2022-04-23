@@ -1,15 +1,12 @@
 package com.DeltaProjectEsiea.DeltaProject.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
+import java.time.LocalDate;
 @Entity
 @Table(name = "articles")
 public class Article {
@@ -18,13 +15,12 @@ public class Article {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
-	private String description;
-	private Integer cost;
+	private String author;
+	private String content;
+	private LocalDate date;
 	
-	@ManyToMany(
-			mappedBy = "articles"
-			)
-	private List<Category> categories = new ArrayList<>();
+	@ManyToOne
+	private Category category;
 
 	public Integer getId() {
 		return id;
@@ -41,29 +37,37 @@ public class Article {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public String getDescription() {
-		return description;
+	
+	public String getAuthor() {
+		return author;
+	}
+	
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public String getContent() {
+		return content;
 	}
 
-	public Integer getCost() {
-		return cost;
+	public void setContent(String content) {
+		this.content = content;
 	}
 
-	public void setCost(Integer cost) {
-		this.cost = cost;
+	public LocalDate getDate() {
+		return date;
 	}
 
-	public List<Category> getCategories() {
-		return categories;
+	public void setDate(LocalDate date) {
+		this.date = date;
 	}
-
-	public void setCategories(List<Category> categories) {
-		this.categories = categories;
+	
+	public Category getCategory() {
+		return category;
+	}
+	
+	public void setCategory(Category category) {
+		this.category = category;
 	}	
 
 }

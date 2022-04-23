@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.DeltaProjectEsiea.DeltaProject.model.Category;
 import com.DeltaProjectEsiea.DeltaProject.model.Article;
 import com.DeltaProjectEsiea.DeltaProject.transformer.category.CategoryLight;
 import com.DeltaProjectEsiea.DeltaProject.transformer.category.CategoryTransformer;
@@ -21,16 +20,12 @@ public class ArticleTransformer {
 		ArticleFull articleFull = new ArticleFull();
 		articleFull.setId(article.getId());
 		articleFull.setName(article.getName());
-		articleFull.setDescription(article.getDescription());
-		articleFull.setCost(article.getCost());
-
-		for (Category category : article.getCategories()) {
-			CategoryLight categoryLight = new CategoryLight();
-			categoryLight.setCategoryId(category.getCategoryId());
-			categoryLight.setName(category.getName());
-			articleFull.getCategories().add(categoryLight);
-		}
-
+		articleFull.setAuthor(article.getAuthor());
+		articleFull.setContent(article.getContent());
+		articleFull.setDate(article.getDate());
+		CategoryLight categoryLight = new CategoryLight();
+		categoryLight.setName(article.getCategory().getName());
+		articleFull.setCategory(categoryLight);
 		return articleFull;
 	}
 
@@ -46,9 +41,10 @@ public class ArticleTransformer {
 		Article p = new Article();
 		p.setId(article.getId());
 		p.setName(article.getName());
-		p.setDescription(article.getDescription());
-		p.setCost(article.getCost());
-		p.setCategories(categoryTransformer.untransform(article.getCategories()));
+		p.setAuthor(article.getAuthor());
+		p.setContent(article.getContent());
+		p.setDate(article.getDate());
+		p.setCategory(categoryTransformer.untransform(article.getCategory()));
 		return p;
 	}
 

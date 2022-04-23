@@ -4,8 +4,9 @@ DROP TABLE IF EXISTS categories;
 CREATE TABLE articles (
   id INT AUTO_INCREMENT  PRIMARY KEY,
   name VARCHAR(250) NOT NULL,
-  description VARCHAR(250) NOT NULL,
-  cost INT(250) NOT NULL
+  author VARCHAR(250) NOT NULL,
+  content VARCHAR(250) NOT NULL,
+  date DATE NOT NULL
 );
 
  CREATE TABLE categories (
@@ -13,9 +14,6 @@ CREATE TABLE articles (
   name VARCHAR(250) NOT NULL
 );
   
-CREATE TABLE category_article (
-	category_id INT NOT NULL,
-	article_id INT NOT NULL
-);
+
 
 	

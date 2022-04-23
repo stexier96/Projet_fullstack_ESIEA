@@ -21,8 +21,9 @@ public class CategoryTransformer {
 			ArticleLight articleLight = new ArticleLight();
 			articleLight.setId(article.getId());
 			articleLight.setName(article.getName());
-			articleLight.setDescription(article.getDescription());
-			articleLight.setCost(article.getCost());
+			articleLight.setContent(article.getContent());
+			articleLight.setAuthor(article.getAuthor());
+			articleLight.setDate(article.getDate());
 			
 			categoryFull.getArticles().add(articleLight);
 		}		
@@ -36,14 +37,14 @@ public class CategoryTransformer {
 		}
 		return categoriesFull;
 	}
-
+/*
 	public List<Category> untransform(List<CategoryLight> categoriesLight) {
 		List<Category> categories = new ArrayList<>();
 		for(CategoryLight categoryL : categoriesLight) {
 			categories.add(untransform(categoryL));
 		}
 		return categories;
-	}
+	}*/
 	
 	public Category untransform(CategoryLight categoryL) {
 		Category category = new Category();

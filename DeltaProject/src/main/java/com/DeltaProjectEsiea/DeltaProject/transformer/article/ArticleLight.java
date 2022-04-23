@@ -1,11 +1,14 @@
 package com.DeltaProjectEsiea.DeltaProject.transformer.article;
 
+import java.time.LocalDate;
+
 public class ArticleLight {
 
-	protected Integer id;
-	protected String name;
-	protected String description;
-	protected Integer cost;
+	private Integer id;
+	private String name;
+	private String author;
+	private String content;
+	private LocalDate date;
 	
 	public Integer getId() {
 		return id;
@@ -19,17 +22,23 @@ public class ArticleLight {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getDescription() {
-		return description;
+	public String getAuthor() {
+		return author;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setAuthor(String author) {
+		this.author = author;
 	}
-	public Integer getCost() {
-		return cost;
+	public String getContent() {
+		return content;
 	}
-	public void setCost(Integer cost) {
-		this.cost = cost;
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public LocalDate getDate() {
+		return date;
+	}
+	public void setDate(LocalDate date) {
+		this.date = date;
 	}
 	
 	
