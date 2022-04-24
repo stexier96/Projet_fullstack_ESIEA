@@ -24,7 +24,9 @@ class Categories extends Component {
         return (
             <div className='categories'>
                 <h2>Veuillez sélectionner ou ajouter une catégorie : </h2>
-                <FormCategories />
+                <FormCategories refreshCategories={category =>
+                    this.getCategories()
+                } />
                 <div>
                     {categories.map(category => (
                         <Category key={category.categoryId} category={category}/>

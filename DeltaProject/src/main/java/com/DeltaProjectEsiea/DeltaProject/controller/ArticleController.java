@@ -1,4 +1,5 @@
 package com.DeltaProjectEsiea.DeltaProject.controller;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,15 +46,10 @@ public class ArticleController {
 	@GetMapping("/categoryId/{categoryId}")
 	public ResponseEntity<Iterable<ArticleFull>> getArticlesByCategory(@PathVariable("categoryId") Integer categoryId) {
 		try {
-			System.err.println(categoryId);
 			Iterable<ArticleFull> articles = articleService.getArticlesByCategoryId(categoryId);
-			System.err.println(articles != null ? "pas null" : "null");
-			for (ArticleFull a : articles ) {
-				System.err.println(a.getId());
-			}
 			return new ResponseEntity<Iterable<ArticleFull>>(articles, HttpStatus.OK);
 		} catch (NotFoundException e) {
-			return new ResponseEntity<Iterable<ArticleFull>>(HttpStatus.NOT_FOUND);
+			 return new ResponseEntity<Iterable<ArticleFull>>(Collections.emptyList(), HttpStatus.OK);
 		}
 	}
 

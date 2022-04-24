@@ -50,7 +50,7 @@ class FormArticle extends React.Component {
             <br/>
             <p>
                 Article Title:  
-                <input name="name" type="text" placeholder="title" onChange={this.handleChange}/>
+                <input name="name" type="text" placeholder="Titre" onChange={this.handleChange}/>
             </p>
             <p>
                 Author:  
@@ -58,7 +58,7 @@ class FormArticle extends React.Component {
             </p>
             <p>
                 Article's content:  
-                <input name="content" type="text" placeholder="Lorem Ipsum" onChange={this.handleChange}/>
+                <input name="content" type="text" placeholder="Contenu" onChange={this.handleChange}/>
             </p>
             <br/>
             <button onClick={this.setArticle}>

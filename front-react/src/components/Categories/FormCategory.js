@@ -22,7 +22,9 @@ class FormCategories extends React.Component {
             body: JSON.stringify({
             name: this.state.name
             })
-        }).then(window.location.reload(false))
+        })
+        .then(res => res.json())
+        .then(res => this.props.refreshCategories(res))
     }
 
     render() {

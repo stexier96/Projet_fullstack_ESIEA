@@ -11,10 +11,10 @@ class Articles extends Component {
     getArticles = () => {
         const categoryId = this.props.category.categoryId;
         fetch("http://localhost:8080/api/private/article/categoryId/" + categoryId)
+        .catch()
         .then(res => res ? res.json() : undefined)
         .then(res => res ? this.setState({articles: res}) : this.setState({articles: []}));
     }
-    
     
     componentDidMount() {
         this.getArticles()
@@ -30,7 +30,10 @@ class Articles extends Component {
                 category={this.props.category}/>
                 <div>
                     {this.state.articles.map(article => (
-                        <Article key={article.id} article={article}/>
+                        <Article key={article.id} article={article}
+                        refreshArticles={article =>
+                            this.getArticles()
+                        }/>
                     ))}
                 </div>
             </div>
