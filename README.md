@@ -6,10 +6,6 @@ Projet du module de développement full-stack ESIEA
 - partie backend
 Dans un terminal, naviguez au répertoire DeltaProject et lancer la commande:
 > mvn spring-boot:run 
-
- ou
-
- > java -jar backend.jar
  
  API disponible sur le port 8080
  [interface swagger de l'api](http://localhost:8080/swagger-ui.html)
