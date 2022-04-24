@@ -1,5 +1,6 @@
 package com.DeltaProjectEsiea.DeltaProject.controller;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.DeltaProjectEsiea.DeltaProject.model.Article;
+import com.DeltaProjectEsiea.DeltaProject.model.Category;
 import com.DeltaProjectEsiea.DeltaProject.service.ArticleService;
+import com.DeltaProjectEsiea.DeltaProject.service.CategoryService;
 import com.DeltaProjectEsiea.DeltaProject.service.NotAllowedException;
 import com.DeltaProjectEsiea.DeltaProject.service.NotFoundException;
 import com.DeltaProjectEsiea.DeltaProject.transformer.article.ArticleFull;
@@ -29,10 +32,29 @@ public class ArticleController {
 
 	@Autowired
 	private ArticleService articleService;
+	
+	@Autowired
+	private CategoryService categoryService;
+
 
 	@GetMapping("")
 	public List<ArticleFull> getArticles() {
 		return articleService.getArticles();
+	}
+	
+	@GetMapping("/categoryId/{categoryId}")
+	public ResponseEntity<Iterable<ArticleFull>> getArticlesByCategory(@PathVariable("categoryId") Integer categoryId) {
+		try {
+			System.err.println(categoryId);
+			Iterable<ArticleFull> articles = articleService.getArticlesByCategoryId(categoryId);
+			System.err.println(articles != null ? "pas null" : "null");
+			for (ArticleFull a : articles ) {
+				System.err.println(a.getId());
+			}
+			return new ResponseEntity<Iterable<ArticleFull>>(articles, HttpStatus.OK);
+		} catch (NotFoundException e) {
+			return new ResponseEntity<Iterable<ArticleFull>>(HttpStatus.NOT_FOUND);
+		}
 	}
 
 	@GetMapping("/{id}")
@@ -48,6 +70,12 @@ public class ArticleController {
 	@PostMapping("")
 	public ResponseEntity<ArticleFull> addArticle(@RequestBody Article article) {
 		try {
+			Integer categoryId = article.getCategory().getCategoryId();
+			
+			Optional<Category> categoryOpt = this.categoryService.getEntityCategory(categoryId);
+			Category category = categoryOpt.get();
+			article.setCategory(category);
+			
 			ArticleFull articleF = articleService.create(article);
 			return new ResponseEntity<>(articleF, HttpStatus.OK);
 		} catch (NotAllowedException e) {

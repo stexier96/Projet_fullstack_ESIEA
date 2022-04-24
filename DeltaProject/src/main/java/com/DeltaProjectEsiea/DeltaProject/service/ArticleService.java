@@ -78,4 +78,13 @@ public class ArticleService {
 		}
 	}
 
+	public Iterable<ArticleFull> getArticlesByCategoryId(Integer categoryId) throws NotFoundException {
+		Iterable<ArticleFull> list = articleTransformer.transform(articleRepository.findByCategoryId(categoryId));
+		System.err.println(list != null ? "PAS NULLE" : "GROSSE MERDE");
+		if (list.iterator().hasNext()) {
+			return list;
+		} else {
+			throw new NotFoundException();
+		}
+	}
 }

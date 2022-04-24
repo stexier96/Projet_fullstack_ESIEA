@@ -17,4 +17,7 @@ public interface ArticleRepository
 	@Query(value = "SELECT * FROM articles WHERE name = :name", nativeQuery = true)
 	public Iterable<Article> findByNameNative(@Param("name") String name);
 	
+	@Query(value = "SELECT * FROM articles WHERE category_category_id = :categoryId", nativeQuery = true)
+	public Iterable<Article> findByCategoryId(@Param("categoryId") Integer categoryId);
+	
 }
