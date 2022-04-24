@@ -23,15 +23,17 @@ class Categories extends Component {
         const {categories} = this.state;
         return (
             <div className='categories'>
-                <h2>Veuillez sélectionner ou ajouter une catégorie : </h2>
+                <h2>Veuillez ajouter une catégorie : </h2>
                 <FormCategories refreshCategories={category =>
                     this.getCategories()
                 } />
+                <h2>Ou consulter les catégories existantes : </h2>
                 <div>
                     {categories.map(category => (
                         <Category key={category.categoryId} category={category}/>
                     ))}
                 </div>
+                
             </div>
         )
     }

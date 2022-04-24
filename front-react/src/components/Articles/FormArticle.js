@@ -49,20 +49,19 @@ class FormArticle extends React.Component {
             Ajouter un article
             <br/>
             <p>
-                Article Title:  
+                Titre de l'article:  
                 <input name="name" type="text" placeholder="Titre" onChange={this.handleChange}/>
             </p>
             <p>
-                Author:  
-                <input name="author" type="text" placeholder="name" onChange={this.handleChange}/>
+                Nom de l'autheur:  
+                <input name="author" type="text" placeholder="Nom" onChange={this.handleChange}/>
             </p>
             <p>
-                Article's content:  
+                Contenu de l'article:  
                 <input name="content" type="text" placeholder="Contenu" onChange={this.handleChange}/>
             </p>
-            <br/>
             <button onClick={this.setArticle}>
-                Submit article
+                Enregistrer l'article
             </button>
 
         </div>

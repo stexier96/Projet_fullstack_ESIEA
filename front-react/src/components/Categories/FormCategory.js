@@ -34,7 +34,6 @@ class FormCategories extends React.Component {
             <p>
                 Nom : <input name="name" type="text" placeholder="Nom de la catégorie" onChange={this.handleChange}/>
             </p>
-            <br/>
             <button onClick={this.setCategory}>
                 Enregistrer
             </button>

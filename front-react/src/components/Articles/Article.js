@@ -18,7 +18,7 @@ class Article extends React.Component {
                 <h4 className="title">{article.name} - {article.author} - {article.date}</h4>
                 <p className="content">{article.content}</p>
                 <button onClick={this.deleteArticle}>
-                    Supprimer
+                    Supprimer cet Article
                 </button>
             </div>
     }
